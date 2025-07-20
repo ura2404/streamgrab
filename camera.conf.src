@@ -1,0 +1,4 @@
+#/bin/bash
+
+CAMERA_NAME="camera"
+STREAM_URL="rtsp://<login>:<password>@<ip or hostname>:<port>/<url_path>"

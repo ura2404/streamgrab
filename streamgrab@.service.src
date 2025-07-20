@@ -1,0 +1,14 @@
+[Unit]
+Description=RTSP stream grab #i
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=<base_dir>/streamgrab.sh <base_dir>/global.conf <base_dir>/%i.conf
+Restart=always
+RestartSec=10
+User=video
+#Group=video
+
+[Install]
+WantedBy=multi-user.target
