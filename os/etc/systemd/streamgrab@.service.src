@@ -1,0 +1,15 @@
+[Unit]
+Description=RTSP stream grab #i
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/streamgrab
+ExecStart=/bin/bash -c "${SERVICE_DIR}/streamgrab.sh ${SERVICE_DIR}/global.conf ${SERVICE_DIR}/%i.conf"
+Restart=always
+RestartSec=10
+User=<user_name>
+#Group=<user_group>
+
+[Install]
+WantedBy=multi-user.target

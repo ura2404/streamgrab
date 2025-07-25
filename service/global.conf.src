@@ -1,5 +1,6 @@
 # === Основные параметры ===
-HEAP_DIR="/mnt/streamgrab/data"     # Главная папка для всех камер
+HEAP_DIR="<heap_dir>"               # Папка для всех камер
+FFMPEG_PATH="/usr/bin/ffmpeg"       # Путь к FFmpeg
 SEGMENT_DURATION=3600               # Длительность видеофайла (в секундах)
 SCALE_RESOLUTION="1280:720"         # Масштаб видео: ширина:высота
                                     #   1920:1080 — Full HD (макс. качество)
@@ -9,8 +10,7 @@ SCALE_RESOLUTION="1280:720"         # Масштаб видео: ширина:в
                                     #   1280:-1   — наоборот
 RETENTION_DAYS=7                    # Хранить видео N дней
 MAX_FOLDER_SIZE_GB=200              # Максимальный объём папки
-RESTART_INTERVAL=3600               # Перезапуск FFmpeg каждые N секунд
+RESTART_INTERVAL=3600               # Перезапуск FFmpeg каждые N секунд (0 - отключено)
 PING_RETRY_INTERVAL=15              # Интервал проверки доступности камеры (сек)
-FFMPEG_PATH="/usr/bin/ffmpeg"       # Путь к FFmpeg
 MAX_LOG_SIZE_MB=10                  # Максимальный размер лог-файла
 MAX_FILE_AGE_SEC=180                # Максимальный допустимый "простой" записи в секундах (если нет новых файлов — считается, что ffmpeg завис)

@@ -1,0 +1,5 @@
+{
+  "cameras" : [
+      { "name" : "camera1", "description" : null }
+  ]
+}

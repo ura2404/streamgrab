@@ -1,0 +1,65 @@
+html, body { margin: 0; padding: 0; font-size: 16px; height: 100vh }
+
+.dash       { margin:0 15px }
+.diapason   { margin-bottom: 0.5rem; text-align: center; font-size: 1rem }
+.empty-data { margin-bottom: 0.5rem; text-align: center; font-size: 1rem }
+
+.tabs {
+  /* display: flex; */
+  /* border-bottom: 1px solid #ccc; */
+  /* margin-bottom: 1em; */
+  overflow-y: auto;
+}
+
+.tab {
+  width: 8rem;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-bottom: none;
+  background: #dbdbdb;
+  text-align: center;
+  margin-right: 5px;
+  /* outline: 1px solid #ccc; */
+}
+
+.tab.active {
+  background: #ffa700;
+  border-color: #ccc;
+  /* border-bottom: 2px solid white; */
+}
+
+.tab-content {
+  display: none;
+  /* padding: 15px; */
+  /* border: 1px solid #ccc; */
+  /* height: 100%; */
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.tab-content.active {
+  /* display: block; */
+  display: flex;
+}
+
+#container { display: flex; flex-direction: column; padding: 0 1rem; height: 100vh; width: 640px }
+#current   { padding: 0.5rem 0; text-align: center; font-size:1.5rem }
+#player    { width: 640px; height:360px !important; flex: none }
+#cameras   { margin-top: 1rem; flex: none }
+#calendar  { margin-top: 1rem; margin-bottom: 0; flex: 1 1 auto }
+
+#calendar-header     { display: flex; margin-bottom: 0.5rem }
+#calendar-header div { width: 8rem; padding: 0rem 1.4rem; text-align: center; margin-right: 5px; }
+
+#cameras           { display: flex }
+#cameras .tab      { min-width:8rem; width: auto; padding: 0.5em 0.8rem; flex: 0 0 auto }
+
+#camera-header div,
+#cameras div       { text-align: center; margin-right: 5px; flex: 0 0 auto }
+
+.row         { display: flex; flex: 1 1 auto }
+.tab-content { height: 100% }
+
+.tabs, .row, .tab-content { /* flex: 1 1 auto; */ min-height: 0; max-height: 100%; } 
+ #calendar { display: flex; flex-direction: column;  min-height: 0; max-height: 100%; }

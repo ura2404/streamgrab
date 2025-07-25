@@ -1,2 +1,6 @@
-*.conf
-*.service
+*.json
+data
+service/*.conf
+os/etc/default/streamgarab
+os/etc/apache2/streamgrab.conf
+os/etc/systemd/*.service

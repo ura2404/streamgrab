@@ -1,0 +1,9 @@
+alias /streamgrab /var/www/streamgrab
+<Directory /var/www/streamgrab >
+    SetEnv CM_MODE "production"
+
+    Options -Indexes +FollowSymLinks +MultiViews
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+</Directory>

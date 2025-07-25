@@ -1,0 +1,4 @@
+# This is configuration file for streamgrab service 
+
+# Folder for service bin end confiles
+SERVICE_DIR="<>project_home_dir>"

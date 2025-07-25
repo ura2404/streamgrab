@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {# <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> #}
+    <script type="text/javascript" src="res/tailwindcss.com/4.1.11/index.js"></script>
+    {# <link type="text/css" href="res/main.less" rel="stylesheet/less" /> #}
+    <link type="text/css" href="res/main.css" rel="stylesheet" />
+    {# <script type="text/javascript" src="res/lesscss.org/4.4.0/less.min.js"></script> #}
+  </head>
+
+  <body>
+    <div id="container">
+
+        <div id="current"><span class="empty">Фрагмент не выбран</span><span class="label"></span></div>
+
+        <video id="player" width="640" height="1360" controls>
+          <source id="videoSource" _src="videos/video1.mp4" type="video/webm" />
+          Ваш браузер не поддерживает HTML5-видео.
+        </video>
+
+        <div id="cameras" class="tabs">
+          {% for key, camera in data %}
+            <div class="tab {% if loop.first %}active{% endif %}" data-tabs="calendar" data-tab="camera-{{ camera.name }}">
+              {% if camera.description %} {{ camera.description }} {% else %} {{ camera.name }} {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+
+        <div id="calendar">
+
+          {% for key, camera in data %}
+            <div class="tab-content {% if loop.first %}active{% endif %} camera" id="camera-{{ camera.name }}">
+
+              {% if camera.data %}
+                <div id="calendar-header"><div>Год</div><div>Месяц</div><div>День</div><div>Время</div></div>
+
+                {# -- years begin -- #}
+                <div id="years" class="row">
+
+                  <div class="tabs">
+                    {% for year, months in camera.data %}<div class="tab {% if loop.first %}active{% endif %}" data-tabs="years" data-tab="year-{{ camera.name }}-{{ year }}">{{ year }}</div>{% endfor %}
+                  </div>
+                  {% for year, months in camera.data %}
+                    <div class="tab-content {% if loop.first %}active{% endif %}" id="year-{{ camera.name }}-{{ year }}">
+
+                      {# -- months start -- #}
+                      <div id="months-{{ year }}" class="row">
+                        <div class="tabs">
+                          {% for month, days in months %}<div class="tab {% if loop.first %}active{% endif %}" data-tabs="months-{{ year }}" data-tab="year-{{ camera.name }}-{{ year }}-{{ month }}">{{ month }}</div>{% endfor %}
+                        </div>
+                        {% for month, days in months %}
+                          <div class="tab-content {% if loop.first %}active{% endif %}" id="year-{{ camera.name }}-{{ year }}-{{ month }}">
+
+                            {# -- days start -- #}
+                            <div id="days-{{ year }}-{{ month }}" class="row">
+                              <div class="tabs">
+                                {% for day, files in days %}<div class="tab {% if loop.first %}active{% endif %}" data-tabs="days-{{ year }}-{{ month }}" data-tab="year-{{ camera.name }}-{{ year }}-{{ month }}-{{ day }}">{{ day }}</div>{% endfor %}
+                              </div>
+                              {% for day, files in days %}
+                                <div class="tab-content {% if loop.first %}active{% endif %}" id="year-{{ camera.name }}-{{ year }}-{{ month }}-{{ day }}">
+
+                                {# -- files start -- #}
+                                <div {# id="files-{{ year }}-{{ month }}-{{ day }} #}" class="row">
+                                  <div class="tabs">
+                                    {% for file in files %}<div class="file tab" data-file="{{ file[0] }}" data-label="{{ file[1] }}">{{ file[2] }}</div>{% endfor %}
+                                  </div>
+                                </div>
+                                {# -- files end -- #}
+
+                                </div>
+                              {% endfor %}
+                            </div>
+                            {# -- days end -- #}
+
+                          </div>
+                        {% endfor %}
+                      </div>
+                      {# -- months end -- #}
+
+                    </div> {# .tab-content #}
+                  {% endfor %}
+
+                </div>
+                {# -- years end -- #}
+
+              {% else %}
+                <div class="empty-data">Нет данных</div>
+              {% endif %} {# camera.data  #}
+
+            </div> {# .tab-content #}
+          {% endfor %}
+
+        </div> {# #calendar #}
+
+    </div> {# #container #}
+
+    <script type="text/javascript" src="res/main.js"></script>
+
+  </body>
+</html>
