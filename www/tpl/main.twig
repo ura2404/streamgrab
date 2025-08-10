@@ -20,13 +20,15 @@
           Ваш браузер не поддерживает HTML5-видео.
         </video>
 
-        <div id="cameras" class="tabs">
-          {% for key, camera in data %}
-            <div class="tab {% if loop.first %}active{% endif %}" data-tabs="calendar" data-tab="camera-{{ camera.name }}">
-              {% if camera.description %} {{ camera.description }} {% else %} {{ camera.name }} {% endif %}
-            </div>
-          {% endfor %}
-        </div>
+        {% if data|length > 1 %}
+          <div id="cameras" class="tabs">
+            {% for key, camera in data %}
+              <div class="tab {% if loop.first %}active{% endif %}" data-tabs="calendar" data-tab="camera-{{ camera.name }}">
+                {% if camera.description %} {{ camera.description }} {% else %} {{ camera.name }} {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
 
         <div id="calendar">
 
