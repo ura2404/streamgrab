@@ -52,7 +52,6 @@ class Camera {
   // --------------------------------------------------------------------------
   private function scanCamera( string $CameraName ){
     $Path = CM_TOP.'/www/data/'.$CameraName.'/streams';
-
     if(file_exists($Path)){
       $Files = scandir($Path);
       $Files = array_filter( $Files, fn($Value) => $Value !== '.' && $Value != '..' && filesize( $Path.'/'.$Value ));
@@ -72,6 +71,8 @@ class Camera {
     $Diapason = [];
     // $Path = CM_TOP.'/data/'.$CameraName.'/streams';
     $CameraData = $this->scanCamera( $CameraName );
+
+    if(!count($CameraData)) return [null,null];
 
     foreach( $CameraData as $FileName ){
       if( preg_match('/(\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2})/', $FileName, $Matches) ) {
